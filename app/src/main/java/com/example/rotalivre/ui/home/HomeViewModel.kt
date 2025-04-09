@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class HomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Select a mobility mode"
+        value = "Selecione um modo de deslocamento"
     }
     val text: LiveData<String> = _text
 
