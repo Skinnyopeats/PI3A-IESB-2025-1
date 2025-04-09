@@ -7,7 +7,12 @@ import androidx.lifecycle.ViewModel
 class HomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "Select a mobility mode"
     }
     val text: LiveData<String> = _text
+
+    // ✅ Add this method to allow updates from the fragment
+    fun setText(newText: String) {
+        _text.value = newText
+    }
 }
