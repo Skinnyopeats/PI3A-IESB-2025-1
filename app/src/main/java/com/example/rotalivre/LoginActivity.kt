@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.TextView // <- Import necessário aqui!
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,5 +23,21 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish() // Close LoginActivity so user can't go back to login screen
         }
+
+        val registerButton: Button = findViewById(R.id.btnRegister)
+        registerButton.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        val forgotPasswordText: TextView = findViewById(R.id.tvForgotPassword)
+
+        forgotPasswordText.setOnClickListener {
+            val intent = Intent(this, PasswordRecoveryActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
 }
