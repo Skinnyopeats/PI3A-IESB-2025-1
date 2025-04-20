@@ -1,5 +1,6 @@
 package com.example.rotalivre
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -49,6 +50,28 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
+
+        // ✅ Listener para lidar com o item "Sair"
+        binding.navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_logout -> {
+                    // Redireciona para a tela de login
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+
+                else -> {
+                    // Comportamento padrão para os demais itens
+                    val handled = NavigationUI.onNavDestinationSelected(menuItem, navController)
+                    if (handled) {
+                        binding.drawerLayout.closeDrawers()
+                    }
+                    handled
+                }
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
